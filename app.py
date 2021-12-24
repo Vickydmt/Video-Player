@@ -65,7 +65,7 @@ def youtube():
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 0
+        encypted = "0"
     if encypted == "0":
         video_id = video_id
     else:
@@ -104,7 +104,7 @@ def jw_payer():
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 0
+        encypted = "0"
     if encypted == "0":
         video_id = video_id
     else:
@@ -135,7 +135,7 @@ def play():
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 0
+        encypted = "0"
     if encypted == "0":
         video_id = video_id
     else:
@@ -164,7 +164,7 @@ def m3u8():
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 0
+        encypted = "0"
     if encypted == "0":
         video_url = video_url
     else:
@@ -188,7 +188,7 @@ def mpd():
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 0
+        encypted = "0"
     if encypted == "0":
         video_url = video_url
     else:
@@ -235,7 +235,7 @@ def brightcove():
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 0
+        encypted = "0"
     if encypted == "0":
         video_url = video_url
     else:
