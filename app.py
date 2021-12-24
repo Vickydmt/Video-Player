@@ -1,7 +1,7 @@
 # Coded by Noob, so don't laugh.
 # Make pull request if you found something wrong
 # (c) Jigar Varma (Jigarvarma2005)
-# Kangers copy with credits
+# Kangers copy with credits xD
 
 import os
 import requests
