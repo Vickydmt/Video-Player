@@ -40,7 +40,7 @@ def checker_page():
     try:
         chk_type = request.args['type']
     except:
-        return "<font color=red size=15>Wrong Video Type</font> <br> ask at @JV_Community in Telegram"
+        return "<font color=red size=15>Wrong Video Type</font> <br> ask at @codexmaniachat in Telegram"
     if chk_type.lower() == "mpd":
         return mpd()
     if chk_type.lower() == "m3u8":
@@ -58,21 +58,21 @@ def checker_page():
 @app.route("/yt")
 def youtube():
     try:
-        video_id = request.args['id']
+        video_id = request.args['url']
     except Exception as e:
-        edata = "Please parse ?id= when calling the api"
+        edata = "Please parse ?url= when calling the api"
         return edata
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 1
+        encypted = 0
     if encypted == "0":
         video_id = video_id
     else:
         try:
             video_id = b64_to_str(video_id)
         except:
-            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @JV_Community in Telegram"
+            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @codexmaniachat in Telegram"
     if ("youtube.com" in video_id) and ("/" in video_id) and ("=" in video_id):
         url = video_id
     elif ("youtu.be" in video_id) and ("/" in video_id):
@@ -97,21 +97,21 @@ def youtube():
 @app.route("/jw")
 def jw_payer():
     try:
-        video_id = request.args['id']
+        video_id = request.args['url']
     except Exception as e:
-        edata = "Please parse ?id= when calling the api"
+        edata = "Please parse ?url= when calling the api"
         return edata
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 1
+        encypted = 0
     if encypted == "0":
         video_id = video_id
     else:
         try:
             video_id = b64_to_str(video_id)
         except:
-            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @JV_Community in Telegram"
+            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @codexmaniachat in Telegram"
     jw_url = "https://cdn.jwplayer.com/v2/media"
     video_response = requests.get(f"{jw_url}/{video_id}")
     if video_response.status_code != 200:
@@ -128,21 +128,21 @@ def jw_payer():
 @app.route("/play")
 def play():
     try:
-        video_id = request.args['id']
+        video_id = request.args['url']
     except Exception as e:
-        edata = "Please parse ?id= when calling the api"
+        edata = "Please parse ?url= when calling the api"
         return edata
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 1
+        encypted = 0
     if encypted == "0":
         video_id = video_id
     else:
         try:
             video_id = b64_to_str(video_id)
         except:
-            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @JV_Community in Telegram"
+            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @codexmaniachat in Telegram"
     video_url = video_id
     track_url = video_id
     video_name = video_id.split("/")[-1]
@@ -157,21 +157,21 @@ def play():
 @app.route("/m3u8")
 def m3u8():
     try:
-        video_url = request.args['id']
+        video_url = request.args['url']
     except Exception as e:
-        edata = "Please parse ?id= when calling the api"
+        edata = "Please parse ?url= when calling the api"
         return edata
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 1
+        encypted = 0
     if encypted == "0":
         video_url = video_url
     else:
         try:
             video_url = b64_to_str(video_url)
         except:
-            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @JV_Community in Telegram"
+            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @codexmaniachat in Telegram"
     return render_template(
         "m3u8.html",
         video_url=video_url,
@@ -181,21 +181,21 @@ def m3u8():
 @app.route("/mpd")
 def mpd():
     try:
-        video_url = request.args['id']
+        video_url = request.args['url']
     except Exception as e:
-        edata = "Please parse ?id= when calling the api"
+        edata = "Please parse ?url= when calling the api"
         return edata
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 1
+        encypted = 0
     if encypted == "0":
         video_url = video_url
     else:
         try:
             video_url = b64_to_str(video_url)
         except:
-            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @JV_Community in Telegram"
+            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @codexmaniachat in Telegram"
     return render_template(
         "mpd.html",
         video_url=video_url,
@@ -205,22 +205,22 @@ def mpd():
 @app.route("/decode")
 def decoder_():
     try:
-        video_url = request.args['id']
+        video_url = request.args['url']
     except Exception as e:
-        edata = "Please parse ?id= when calling the api"
+        edata = "Please parse ?url= when calling the api"
         return edata
     try:
         video_url = b64_to_str(video_url)
     except:
-        return "<font color=red size=15>Wrong Video ID</font> <br> ask at @JV_Community in Telegram"
+        return "<font color=red size=15>Wrong Video ID</font> <br> ask at @codexmaniachat in Telegram"
     return {"decoded": video_url}
 
 @app.route("/encode")
 def encoder_():
     try:
-        video_url = request.args['id']
+        video_url = request.args['url']
     except Exception as e:
-        edata = "Please parse ?id= when calling the api"
+        edata = "Please parse ?url= when calling the api"
         return edata
     video_url = str_to_b64(video_url)
     return {"encoded": video_url}
@@ -228,21 +228,21 @@ def encoder_():
 @app.route("/brightcove")
 def brightcove():
     try:
-        video_url = request.args['id']
+        video_url = request.args['url']
     except Exception as e:
-        edata = "Please parse ?id= when calling the api"
+        edata = "Please parse ?url= when calling the api"
         return edata
     try:
         encypted = request.args['en']
     except Exception as e:
-        encypted = 1
+        encypted = 0
     if encypted == "0":
         video_url = video_url
     else:
         try:
             video_url = b64_to_str(video_url)
         except:
-            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @JV_Community in Telegram"
+            return "<font color=red size=15>Wrong Video ID</font> <br> ask at @codexmaniachat in Telegram"
     bc_url = f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos"
     bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
     video_response = requests.get(f"{bc_url}/{video_url}", headers=bc_hdr)
